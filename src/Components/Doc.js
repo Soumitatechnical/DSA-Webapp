@@ -7,7 +7,8 @@ export class Doc extends Component {
         defaultmarks:['dolor sit', 'illum', 'autem'],
         
         
-        newMarks:""
+        
+       
 
        
     };
@@ -17,10 +18,12 @@ export class Doc extends Component {
     // }
 
     getMarks=(e)=>{
-        console.log(e.target.id);
+        console.log(e);
         //const marks=e.target.elements.mark;
         
-       const newMarks=e.target.id.value;
+       const newMarks=e.target.childNodes[0].data;
+        
+   
         this.setState({defaultmarks:[...this.state.defaultmarks,newMarks]});
     }
     render() {
@@ -29,8 +32,8 @@ export class Doc extends Component {
                 <div className="card grid-2 py-2">
                 <div>
                         <p id="para" value={this.state.newMarks} 
-                        onMouseDown={this.getMarks} >Lorem ipsum<mark> dolor sit</mark> amet consectetur adipisicing elit. Laudantium &nbsp;
-                        <mark>illum</mark> ipsam at iure deserunt soluta, voluptas ad <mark>autem</mark> perferendis cupiditate.
+                        onMouseUp={this.getMarks} >Lorem ipsum dolor sit amet consectetur adipisicing elit. Laudantium &nbsp;
+                        illum ipsam at iure deserunt soluta, voluptas ad autem perferendis cupiditate.
                         </p> 
                         <Link to={`/`} className="btn btn-dark" 
                                         style={{marginLeft:"150px", marginTop:"10px"}}>Back Home</Link>
